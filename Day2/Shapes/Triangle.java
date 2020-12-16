@@ -24,13 +24,16 @@ public class Triangle implements Shape {
     public void display() {
         int largeHeight = (int) (height * 10);
         int largeBase = (int) (base * 10);
-        int largeHypotenuse = (int) (hypotenuse * 10);
+        int slope = -((largeHeight) / (largeBase));
+        System.out.println(slope);
         for (int y = 0; y < largeHeight; y++) {
             for (int x = 0; x < largeBase; x++) {
-                if (x == 0 || y == 0 || y / x == largeHypotenuse) {
-                    System.out.print(" ");
-                } else {
+                if (x == 0 || y == 0) {
+                    System.out.print("*");// these are reversed,
+                } else if (y == slope * x + largeHeight) {
                     System.out.print("*");
+                } else {
+                    System.out.print(" ");
                 }
             }
             System.out.println("");
@@ -39,10 +42,10 @@ public class Triangle implements Shape {
     }
 
     public static void main(String[] args) {
-        Triangle rect = new Triangle(5, 6);
-        double area = rect.calculateArea();
+        Triangle tri = new Triangle(5, 5);
+        double area = tri.calculateArea();
         System.out.println(area);
-        rect.display();
+        tri.display();
     }
 
 }
